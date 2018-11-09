@@ -1,0 +1,58 @@
+#N canvas 190 31 1079 577 10;
+#X msg 59 73 read -resize kick.wav kick, f 27;
+#N canvas 0 22 450 278 (subpatch) 0;
+#X array kick 21340 float 2;
+#X coords 0 1 21340 -1 200 140 1 0 0;
+#X restore 630 52 graph;
+#X obj 57 31 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 60 125 soundfiler;
+#N canvas 0 22 450 278 (subpatch) 0;
+#X array snare 14175 float 2;
+#X coords 0 1 14175 -1 200 140 1;
+#X restore 629 223 graph;
+#X obj 260 36 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 263 130 soundfiler;
+#X msg 262 78 read -resize snare.wav snare;
+#N canvas 0 22 450 278 (subpatch) 0;
+#X array hihat 10418 float 2;
+#X coords 0 1 10418 -1 200 140 1;
+#X restore 629 393 graph;
+#X obj 374 113 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 377 207 soundfiler;
+#X msg 376 155 read -resize hihat.wav hihat;
+#X obj 159 248 key;
+#X floatatom 122 274 5 0 0 0 - - -;
+#X obj 164 325 sel 97 115 106;
+#X obj 100 399 tabplay~ kick;
+#X obj 142 455 *~ 1;
+#X obj 84 503 dac~;
+#X obj 103 362 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 194 366 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 197 400 tabplay~ snare;
+#X obj 308 399 tabplay~ hihat;
+#X obj 284 364 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X connect 0 0 3 0;
+#X connect 2 0 0 0;
+#X connect 5 0 7 0;
+#X connect 7 0 6 0;
+#X connect 9 0 11 0;
+#X connect 11 0 10 0;
+#X connect 12 0 13 0;
+#X connect 13 0 14 0;
+#X connect 14 0 18 0;
+#X connect 14 1 19 0;
+#X connect 14 2 22 0;
+#X connect 15 0 16 0;
+#X connect 16 0 17 0;
+#X connect 16 0 17 1;
+#X connect 18 0 15 0;
+#X connect 19 0 20 0;
+#X connect 20 0 16 0;
+#X connect 21 0 16 0;
+#X connect 22 0 21 0;
